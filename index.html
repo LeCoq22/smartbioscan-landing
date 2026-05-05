@@ -194,8 +194,8 @@
        PRECIOS
     ═══════════════════════════════════════════════ */
     #precios { background: #fff; }
-    .pricing-wrap { max-width: 760px; margin: 0 auto; }
-    .pricing-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .pricing-wrap { max-width: 1100px; margin: 0 auto; }
+    .pricing-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
     .price-card {
       background: #fff; border: 2px solid var(--gray-border);
       border-radius: 16px; padding: 40px 32px; position: relative;
@@ -215,7 +215,7 @@
     .plan-currency { font-size: 1.4rem; font-weight: 700; color: var(--navy); align-self: flex-start; margin-top: 8px; }
     .plan-price { font-size: 2.8rem; font-weight: 800; color: var(--navy); line-height: 1; }
     .plan-period { font-size: .9rem; color: var(--gray-text); }
-    .plan-per { font-size: 13px; color: var(--gray-text); margin-bottom: 26px; }
+    .plan-per { font-size: 13px; color: var(--gray-text); margin-bottom: 4px; }
     .plan-features li {
       display: flex; align-items: flex-start; gap: 10px;
       font-size: .9rem; color: var(--gray-dark);
@@ -224,6 +224,12 @@
     .plan-features li:last-child { border: none; }
     .plan-features { margin-bottom: 28px; }
     .chk { color: var(--cyan); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .plan-savings {
+      display: inline-block; background: rgba(8,145,178,.12); color: var(--cyan);
+      font-size: 11px; font-weight: 700; padding: 3px 12px;
+      border-radius: 20px; white-space: nowrap; margin-bottom: 14px;
+    }
+    .plan-billing { font-size: 12px; color: var(--gray-text); margin-bottom: 20px; line-height: 1.5; }
     .plan-btn {
       display: block; text-align: center; width: 100%; padding: 13px;
       border-radius: 8px; font-size: .95rem; font-weight: 700;
@@ -340,7 +346,10 @@
       .hero-right { max-width: 100%; }
       .cards-3, .steps-3, .audience-3 { grid-template-columns: 1fr; gap: 20px; }
       .step::after { display: none; }
-      .pricing-2 { grid-template-columns: 1fr; max-width: 380px; margin: 0 auto; }
+      .pricing-4 { grid-template-columns: repeat(2, 1fr); max-width: 680px; margin: 0 auto; }
+    }
+    @media (max-width: 600px) {
+      .pricing-4 { grid-template-columns: 1fr; max-width: 380px; margin: 0 auto; }
     }
     @media (max-width: 600px) {
       section { padding: 64px 5%; }
@@ -498,50 +507,72 @@
   <div class="section-header">
     <span class="eyebrow">Planes</span>
     <h2>Precios simples, sin sorpresas</h2>
-    <p class="subtitle">Pagás solo por los reportes que generás. Sin costos ocultos ni compromisos de permanencia.</p>
+    <p class="subtitle">Pagás solo por los reportes que generás. Sin costos ocultos.</p>
   </div>
   <div class="pricing-wrap">
-    <div class="pricing-2">
-      <!-- Starter -->
+    <div class="pricing-4">
+
+      <!-- BioScan Básico · Mensual -->
       <div class="price-card">
-        <p class="plan-name">Starter</p>
+        <p class="plan-name">BioScan Básico · Mensual</p>
         <div class="plan-price-row">
           <span class="plan-currency">$</span>
-          <span class="plan-price">15</span>
-          <span class="plan-period">USD/mes</span>
+          <span class="plan-price">817</span>
         </div>
-        <p class="plan-per">40 reportes — ~$0.37 por reporte</p>
+        <p class="plan-per">por reporte</p>
+        <p class="plan-billing">$24.500 / mes</p>
         <ul class="plan-features">
-          <li><span class="chk">✓</span>40 reportes PDF por mes</li>
-          <li><span class="chk">✓</span>Hasta 10 pacientes activos</li>
-          <li><span class="chk">✓</span>Análisis completo de composición</li>
-          <li><span class="chk">✓</span>Historial y evolución gráfica</li>
-          <li><span class="chk">✓</span>Soporte por email</li>
+          <li><span class="chk">✓</span>30 reportes por mes</li>
         </ul>
-        <a href="#registro" class="plan-btn">Empezar ahora</a>
       </div>
-      <!-- Pro -->
+
+      <!-- BioScan Plus · Mensual -->
+      <div class="price-card">
+        <p class="plan-name">BioScan Plus · Mensual</p>
+        <div class="plan-price-row">
+          <span class="plan-currency">$</span>
+          <span class="plan-price">550</span>
+        </div>
+        <p class="plan-per">por reporte</p>
+        <p class="plan-billing">$55.000 / mes</p>
+        <ul class="plan-features">
+          <li><span class="chk">✓</span>100 reportes por mes</li>
+        </ul>
+      </div>
+
+      <!-- BioScan Básico · Semestral -->
+      <div class="price-card">
+        <span class="plan-savings">Ahorrás $24.600</span>
+        <p class="plan-name">BioScan Básico · Semestral</p>
+        <div class="plan-price-row">
+          <span class="plan-currency">$</span>
+          <span class="plan-price">680</span>
+        </div>
+        <p class="plan-per">por reporte</p>
+        <p class="plan-billing">$20.400 / mes<br>$122.400 cada 6 meses</p>
+        <ul class="plan-features">
+          <li><span class="chk">✓</span>30 reportes por mes</li>
+        </ul>
+      </div>
+
+      <!-- BioScan Plus · Semestral -->
       <div class="price-card featured">
-        <div class="badge-popular">Más popular</div>
-        <p class="plan-name">Pro</p>
+        <div class="badge-popular">Mejor valor</div>
+        <span class="plan-savings">Ahorrás $55.200</span>
+        <p class="plan-name">BioScan Plus · Semestral</p>
         <div class="plan-price-row">
           <span class="plan-currency">$</span>
-          <span class="plan-price">25</span>
-          <span class="plan-period">USD/mes</span>
+          <span class="plan-price">458</span>
         </div>
-        <p class="plan-per">100 reportes — ~$0.25 por reporte</p>
+        <p class="plan-per">por reporte</p>
+        <p class="plan-billing">$45.800 / mes<br>$274.800 cada 6 meses</p>
         <ul class="plan-features">
-          <li><span class="chk">✓</span>100 reportes PDF por mes</li>
-          <li><span class="chk">✓</span>Pacientes ilimitados</li>
-          <li><span class="chk">✓</span>Análisis completo de composición</li>
-          <li><span class="chk">✓</span>Historial y evolución gráfica</li>
-          <li><span class="chk">✓</span>Envío por WhatsApp integrado</li>
-          <li><span class="chk">✓</span>Soporte prioritario</li>
+          <li><span class="chk">✓</span>100 reportes por mes</li>
         </ul>
-        <a href="#registro" class="plan-btn featured-btn">Empezar ahora</a>
       </div>
+
     </div>
-    <p class="pricing-note">Sin permanencia. Cancelás cuando querés. Facturación mensual.</p>
+    <p class="pricing-note">¿Necesitás más reportes? Podés adquirir packs de 10 reportes adicionales al precio por reporte de tu plan actual.</p>
   </div>
 </section>
 
