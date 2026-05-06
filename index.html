@@ -199,6 +199,7 @@
     .price-card {
       background: #fff; border: 2px solid var(--gray-border);
       border-radius: 16px; padding: 40px 32px; position: relative;
+      display: flex; flex-direction: column;
     }
     .price-card.featured { border-color: var(--cyan); box-shadow: 0 0 0 5px rgba(8,145,178,.08); }
     .badge-popular {
@@ -207,10 +208,7 @@
       font-size: 11px; font-weight: 700; padding: 4px 18px;
       border-radius: 20px; white-space: nowrap; letter-spacing: .5px;
     }
-    .plan-name {
-      font-size: 12px; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 1.5px; color: var(--gray-text); margin-bottom: 14px;
-    }
+    .plan-name { font-size: 14px; font-weight: 700; color: var(--navy); margin: 0; }
     .plan-price-row { display: flex; align-items: baseline; gap: 4px; margin-bottom: 4px; }
     .plan-currency { font-size: 1.4rem; font-weight: 700; color: var(--navy); align-self: flex-start; margin-top: 8px; }
     .plan-price { font-size: 2.8rem; font-weight: 800; color: var(--navy); line-height: 1; }
@@ -229,7 +227,17 @@
       font-size: 11px; font-weight: 700; padding: 3px 12px;
       border-radius: 20px; white-space: nowrap; margin-bottom: 14px;
     }
-    .plan-billing { font-size: 12px; color: var(--gray-text); margin-bottom: 20px; line-height: 1.5; }
+    .plan-savings.is-empty { visibility: hidden; }
+    .plan-header-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+    .plan-billing-pill {
+      background: var(--gray-bg); color: var(--gray-text);
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .5px; padding: 3px 12px; border-radius: 20px;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .plan-billing { font-size: 12px; color: var(--gray-text); margin-bottom: 4px; line-height: 1.5; }
+    .plan-billing-secondary { font-size: 12px; color: var(--gray-text); margin-bottom: 20px; line-height: 1.5; }
+    .plan-billing-secondary.is-empty { visibility: hidden; }
     .plan-btn {
       display: block; text-align: center; width: 100%; padding: 13px;
       border-radius: 8px; font-size: .95rem; font-weight: 700;
@@ -514,13 +522,18 @@
 
       <!-- BioScan Básico · Mensual -->
       <div class="price-card">
-        <p class="plan-name">BioScan Básico · Mensual</p>
+        <span class="plan-savings is-empty" aria-hidden="true">&nbsp;</span>
+        <div class="plan-header-row">
+          <p class="plan-name">BioScan Básico</p>
+          <span class="plan-billing-pill">Mensual</span>
+        </div>
         <div class="plan-price-row">
           <span class="plan-currency">$</span>
           <span class="plan-price">950</span>
         </div>
         <p class="plan-per">por reporte</p>
         <p class="plan-billing">$28.500 / mes</p>
+        <p class="plan-billing-secondary is-empty" aria-hidden="true">&nbsp;</p>
         <ul class="plan-features">
           <li><span class="chk">✓</span>30 reportes por mes</li>
         </ul>
@@ -528,13 +541,18 @@
 
       <!-- BioScan Plus · Mensual -->
       <div class="price-card">
-        <p class="plan-name">BioScan Plus · Mensual</p>
+        <span class="plan-savings is-empty" aria-hidden="true">&nbsp;</span>
+        <div class="plan-header-row">
+          <p class="plan-name">BioScan Plus</p>
+          <span class="plan-billing-pill">Mensual</span>
+        </div>
         <div class="plan-price-row">
           <span class="plan-currency">$</span>
           <span class="plan-price">650</span>
         </div>
         <p class="plan-per">por reporte</p>
         <p class="plan-billing">$65.000 / mes</p>
+        <p class="plan-billing-secondary is-empty" aria-hidden="true">&nbsp;</p>
         <ul class="plan-features">
           <li><span class="chk">✓</span>100 reportes por mes</li>
         </ul>
@@ -543,13 +561,17 @@
       <!-- BioScan Básico · Semestral -->
       <div class="price-card">
         <span class="plan-savings">Ahorrás $28.500</span>
-        <p class="plan-name">BioScan Básico · Semestral</p>
+        <div class="plan-header-row">
+          <p class="plan-name">BioScan Básico</p>
+          <span class="plan-billing-pill">Semestral</span>
+        </div>
         <div class="plan-price-row">
           <span class="plan-currency">$</span>
           <span class="plan-price">790</span>
         </div>
         <p class="plan-per">por reporte</p>
-        <p class="plan-billing">$23.750 / mes<br>$142.500 cada 6 meses</p>
+        <p class="plan-billing">$23.750 / mes</p>
+        <p class="plan-billing-secondary">$142.500 cada 6 meses</p>
         <ul class="plan-features">
           <li><span class="chk">✓</span>30 reportes por mes</li>
         </ul>
@@ -559,13 +581,17 @@
       <div class="price-card featured">
         <div class="badge-popular">Mejor valor</div>
         <span class="plan-savings">Ahorrás $65.000</span>
-        <p class="plan-name">BioScan Plus · Semestral</p>
+        <div class="plan-header-row">
+          <p class="plan-name">BioScan Plus</p>
+          <span class="plan-billing-pill">Semestral</span>
+        </div>
         <div class="plan-price-row">
           <span class="plan-currency">$</span>
           <span class="plan-price">540</span>
         </div>
         <p class="plan-per">por reporte</p>
-        <p class="plan-billing">$54.166 / mes<br>$325.000 cada 6 meses</p>
+        <p class="plan-billing">$54.166 / mes</p>
+        <p class="plan-billing-secondary">$325.000 cada 6 meses</p>
         <ul class="plan-features">
           <li><span class="chk">✓</span>100 reportes por mes</li>
         </ul>
