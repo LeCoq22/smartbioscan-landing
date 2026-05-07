@@ -196,19 +196,20 @@
     #precios { background: #fff; }
     .pricing-wrap { max-width: 1100px; margin: 0 auto; }
     .pricing-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .price-card-outer { display: flex; flex-direction: column; }
+    .badge-slot { height: 26px; display: flex; justify-content: center; align-items: center; }
     .price-card {
       background: #fff; border: 2px solid var(--gray-border);
       border-radius: 16px; padding: 40px 32px; position: relative;
-      display: flex; flex-direction: column;
+      display: flex; flex-direction: column; flex: 1;
     }
     .price-card.featured { border-color: var(--cyan); box-shadow: 0 0 0 5px rgba(8,145,178,.08); }
     .badge-popular {
-      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
       background: var(--cyan); color: #fff;
       font-size: 11px; font-weight: 700; padding: 4px 18px;
       border-radius: 20px; white-space: nowrap; letter-spacing: .5px;
     }
-    .plan-name { font-size: 14px; font-weight: 700; color: var(--navy); margin: 0; min-height: 2.4em; }
+    .plan-name { font-size: 14px; font-weight: 700; color: var(--navy); margin: 0; line-height: 1.2; min-height: 2.4em; }
     .plan-price-row { display: flex; align-items: baseline; gap: 4px; margin-bottom: 4px; }
     .plan-currency { font-size: 1.4rem; font-weight: 700; color: var(--navy); align-self: flex-start; margin-top: 8px; }
     .plan-price { font-size: 2.8rem; font-weight: 800; color: var(--navy); line-height: 1; }
@@ -521,80 +522,91 @@
     <div class="pricing-4">
 
       <!-- BioScan Básico · Mensual -->
-      <div class="price-card">
-        <span class="plan-savings is-empty" aria-hidden="true">&nbsp;</span>
-        <div class="plan-header-row">
-          <p class="plan-name">BioScan Básico</p>
-          <span class="plan-billing-pill">Mensual</span>
+      <div class="price-card-outer">
+        <div class="badge-slot"></div>
+        <div class="price-card">
+          <span class="plan-savings is-empty" aria-hidden="true">&nbsp;</span>
+          <div class="plan-header-row">
+            <p class="plan-name">BioScan Básico</p>
+            <span class="plan-billing-pill">Mensual</span>
+          </div>
+          <div class="plan-price-row">
+            <span class="plan-currency">$</span>
+            <span class="plan-price">950</span>
+          </div>
+          <p class="plan-per">por reporte</p>
+          <p class="plan-billing">$28.500 / mes</p>
+          <p class="plan-billing-secondary is-empty" aria-hidden="true">&nbsp;</p>
+          <ul class="plan-features">
+            <li><span class="chk">✓</span>30 reportes por mes</li>
+          </ul>
         </div>
-        <div class="plan-price-row">
-          <span class="plan-currency">$</span>
-          <span class="plan-price">950</span>
-        </div>
-        <p class="plan-per">por reporte</p>
-        <p class="plan-billing">$28.500 / mes</p>
-        <p class="plan-billing-secondary is-empty" aria-hidden="true">&nbsp;</p>
-        <ul class="plan-features">
-          <li><span class="chk">✓</span>30 reportes por mes</li>
-        </ul>
       </div>
 
       <!-- BioScan Plus · Mensual -->
-      <div class="price-card">
-        <span class="plan-savings is-empty" aria-hidden="true">&nbsp;</span>
-        <div class="plan-header-row">
-          <p class="plan-name">BioScan Plus</p>
-          <span class="plan-billing-pill">Mensual</span>
+      <div class="price-card-outer">
+        <div class="badge-slot"></div>
+        <div class="price-card">
+          <span class="plan-savings is-empty" aria-hidden="true">&nbsp;</span>
+          <div class="plan-header-row">
+            <p class="plan-name">BioScan Plus</p>
+            <span class="plan-billing-pill">Mensual</span>
+          </div>
+          <div class="plan-price-row">
+            <span class="plan-currency">$</span>
+            <span class="plan-price">650</span>
+          </div>
+          <p class="plan-per">por reporte</p>
+          <p class="plan-billing">$65.000 / mes</p>
+          <p class="plan-billing-secondary is-empty" aria-hidden="true">&nbsp;</p>
+          <ul class="plan-features">
+            <li><span class="chk">✓</span>100 reportes por mes</li>
+          </ul>
         </div>
-        <div class="plan-price-row">
-          <span class="plan-currency">$</span>
-          <span class="plan-price">650</span>
-        </div>
-        <p class="plan-per">por reporte</p>
-        <p class="plan-billing">$65.000 / mes</p>
-        <p class="plan-billing-secondary is-empty" aria-hidden="true">&nbsp;</p>
-        <ul class="plan-features">
-          <li><span class="chk">✓</span>100 reportes por mes</li>
-        </ul>
       </div>
 
       <!-- BioScan Básico · Semestral -->
-      <div class="price-card">
-        <span class="plan-savings">Ahorrás $28.500</span>
-        <div class="plan-header-row">
-          <p class="plan-name">BioScan Básico</p>
-          <span class="plan-billing-pill">Semestral</span>
+      <div class="price-card-outer">
+        <div class="badge-slot"></div>
+        <div class="price-card">
+          <span class="plan-savings">Ahorrás $28.500</span>
+          <div class="plan-header-row">
+            <p class="plan-name">BioScan Básico</p>
+            <span class="plan-billing-pill">Semestral</span>
+          </div>
+          <div class="plan-price-row">
+            <span class="plan-currency">$</span>
+            <span class="plan-price">790</span>
+          </div>
+          <p class="plan-per">por reporte</p>
+          <p class="plan-billing">$23.750 / mes</p>
+          <p class="plan-billing-secondary">$142.500 cada 6 meses</p>
+          <ul class="plan-features">
+            <li><span class="chk">✓</span>30 reportes por mes</li>
+          </ul>
         </div>
-        <div class="plan-price-row">
-          <span class="plan-currency">$</span>
-          <span class="plan-price">790</span>
-        </div>
-        <p class="plan-per">por reporte</p>
-        <p class="plan-billing">$23.750 / mes</p>
-        <p class="plan-billing-secondary">$142.500 cada 6 meses</p>
-        <ul class="plan-features">
-          <li><span class="chk">✓</span>30 reportes por mes</li>
-        </ul>
       </div>
 
       <!-- BioScan Plus · Semestral -->
-      <div class="price-card featured">
-        <div class="badge-popular">Mejor valor</div>
-        <span class="plan-savings">Ahorrás $65.000</span>
-        <div class="plan-header-row">
-          <p class="plan-name">BioScan Plus</p>
-          <span class="plan-billing-pill">Semestral</span>
+      <div class="price-card-outer">
+        <div class="badge-slot"><div class="badge-popular">Mejor valor</div></div>
+        <div class="price-card featured">
+          <span class="plan-savings">Ahorrás $65.000</span>
+          <div class="plan-header-row">
+            <p class="plan-name">BioScan Plus</p>
+            <span class="plan-billing-pill">Semestral</span>
+          </div>
+          <div class="plan-price-row">
+            <span class="plan-currency">$</span>
+            <span class="plan-price">540</span>
+          </div>
+          <p class="plan-per">por reporte</p>
+          <p class="plan-billing">$54.166 / mes</p>
+          <p class="plan-billing-secondary">$325.000 cada 6 meses</p>
+          <ul class="plan-features">
+            <li><span class="chk">✓</span>100 reportes por mes</li>
+          </ul>
         </div>
-        <div class="plan-price-row">
-          <span class="plan-currency">$</span>
-          <span class="plan-price">540</span>
-        </div>
-        <p class="plan-per">por reporte</p>
-        <p class="plan-billing">$54.166 / mes</p>
-        <p class="plan-billing-secondary">$325.000 cada 6 meses</p>
-        <ul class="plan-features">
-          <li><span class="chk">✓</span>100 reportes por mes</li>
-        </ul>
       </div>
 
     </div>
