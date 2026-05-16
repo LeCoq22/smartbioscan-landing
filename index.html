@@ -69,6 +69,7 @@
     .btn-secondary {
       color: var(--cyan); font-weight: 600; font-size: 14px;
       display: inline-flex; align-items: center; gap: 4px;
+      padding: 11px 4px;
       border-bottom: 1.5px solid transparent;
       transition: color .2s, border-color .2s;
     }
@@ -93,14 +94,32 @@
     }
     #site-header.scrolled { box-shadow: 0 1px 28px rgba(12,74,110,.10); }
     .header-logo { display: flex; align-items: center; }
-    .header-logo svg { height: 46px; width: auto; }
+    .header-logo svg { height: 46px; width: 97px; max-width: 100%; }
     .btn-nav {
       background: var(--cyan); color: #fff;
-      padding: 9px 22px; border-radius: 8px;
+      padding: 12px 22px; border-radius: 8px;
       font-size: 14px; font-weight: 600;
       transition: background .2s;
     }
     .btn-nav:hover { background: var(--cyan-dark); }
+
+    /* ═══════════════════════════════════════════════
+       FAB MOBILE — "Comenzar" flotante
+    ═══════════════════════════════════════════════ */
+    .fab-cta {
+      position: fixed; bottom: 20px; right: 20px;
+      z-index: 150;
+      background: var(--cyan); color: #fff;
+      padding: 14px 22px; border-radius: 30px;
+      font-size: 15px; font-weight: 700;
+      display: none; align-items: center; gap: 6px;
+      box-shadow: 0 6px 20px rgba(8,145,178,.42);
+      transition: background .2s, transform .15s, opacity .25s, visibility .25s;
+      opacity: 0; visibility: hidden;
+      min-height: 48px;
+    }
+    .fab-cta.is-visible { opacity: 1; visibility: visible; }
+    .fab-cta:hover { background: var(--cyan-dark); transform: translateY(-2px); }
 
     /* ═══════════════════════════════════════════════
        HERO
@@ -294,7 +313,7 @@
     .fg input:focus, .fg select:focus {
       outline: none; border-color: var(--cyan); background: rgba(255,255,255,.10);
     }
-    .fg input::placeholder { color: #475569; }
+    .fg input::placeholder { color: #94a3b8; }
     .fg select option { background: #0d2235; }
     .btn-submit {
       width: 100%; padding: 15px; margin-top: 8px;
@@ -323,7 +342,7 @@
     .footer-logo svg { height: 34px; width: auto; }
     .footer-right { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
     .footer-right span { color: #475569; font-size: 13px; }
-    .footer-right a { color: #64748b; font-size: 13px; transition: color .2s; }
+    .footer-right a { color: #64748b; font-size: 13px; padding: 12px 0; display: inline-block; transition: color .2s; }
     .footer-right a:hover { color: var(--cyan); }
 
     /* ═══════════════════════════════════════════════
@@ -367,6 +386,10 @@
       .form-card { padding: 28px 20px; }
       footer { flex-direction: column; text-align: center; }
       .footer-right { justify-content: center; }
+      #site-header { padding: 0 20px; }
+      #site-header .btn-nav { display: none; }
+      .header-logo svg { height: 38px; width: 80px; }
+      .fab-cta { display: inline-flex; }
     }
   </style>
 </head>
@@ -698,6 +721,13 @@
 </footer>
 
 <!-- ══════════════════════════════════════
+     FAB MOBILE — "Comenzar" flotante
+══════════════════════════════════════ -->
+<a href="#registro" class="fab-cta" id="fab-cta" aria-label="Comenzar — acceso anticipado">
+  Comenzar <span aria-hidden="true">→</span>
+</a>
+
+<!-- ══════════════════════════════════════
      LIGHTBOX
 ══════════════════════════════════════ -->
 <div id="lightbox" class="lightbox" onclick="closeLightbox()" role="dialog" aria-modal="true" aria-label="Vista ampliada del reporte">
@@ -730,6 +760,41 @@
   window.addEventListener('scroll', () => {
     hdr.classList.toggle('scrolled', window.scrollY > 8);
   }, { passive: true });
+
+  /* ── FAB mobile: aparece tras el hero, se oculta en #registro y footer ── */
+  const fab = document.getElementById('fab-cta');
+  const heroSection = document.getElementById('hero');
+  const regSection = document.getElementById('registro');
+  const footerEl = document.querySelector('footer');
+
+  let pastHero = false;
+  let inHidingZone = false;
+  const updateFab = () => {
+    fab.classList.toggle('is-visible', pastHero && !inHidingZone);
+  };
+
+  if ('IntersectionObserver' in window && heroSection && regSection && footerEl) {
+    const heroObs = new IntersectionObserver(([e]) => {
+      pastHero = !e.isIntersecting && e.boundingClientRect.top < 0;
+      updateFab();
+    }, { threshold: 0, rootMargin: '0px 0px -40% 0px' });
+    heroObs.observe(heroSection);
+
+    const hideObs = new IntersectionObserver(entries => {
+      inHidingZone = entries.some(en => en.isIntersecting);
+      updateFab();
+    }, { threshold: 0.1 });
+    hideObs.observe(regSection);
+    hideObs.observe(footerEl);
+  } else {
+    /* Fallback sin IntersectionObserver */
+    window.addEventListener('scroll', () => {
+      pastHero = window.scrollY > 600;
+      const regTop = regSection ? regSection.getBoundingClientRect().top : Infinity;
+      inHidingZone = regTop < window.innerHeight * 0.9;
+      updateFab();
+    }, { passive: true });
+  }
 
   /* ── Lightbox ── */
   function openLightbox(src) {
