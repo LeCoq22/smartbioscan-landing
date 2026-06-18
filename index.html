@@ -228,7 +228,7 @@
       font-size: 11px; font-weight: 700; padding: 4px 18px;
       border-radius: 20px; white-space: nowrap; letter-spacing: .5px;
     }
-    .plan-name { font-size: 14px; font-weight: 700; color: var(--navy); margin: 0; line-height: 1.2; min-height: 2.4em; }
+    .plan-name { font-size: 14px; font-weight: 700; color: var(--navy); margin: 0; line-height: 1.2; min-height: 2.6em; display: flex; align-items: flex-end; }
     .plan-price-row { display: flex; align-items: baseline; gap: 4px; margin-bottom: 4px; }
     .plan-currency { font-size: 1.4rem; font-weight: 700; color: var(--navy); align-self: flex-start; margin-top: 8px; }
     .plan-price { font-size: 2.8rem; font-weight: 800; color: var(--navy); line-height: 1; }
@@ -315,6 +315,9 @@
     }
     .fg input::placeholder { color: #94a3b8; }
     .fg select option { background: #0d2235; }
+    .label-wa { display: flex; align-items: center; gap: 7px; }
+    .lbl-opt { color: #94a3b8; font-weight: 400; font-size: 13px; }
+    .wa-hint { font-size: 12px; color: #94a3b8; margin-top: 6px; line-height: 1.5; }
     .btn-submit {
       width: 100%; padding: 15px; margin-top: 8px;
       background: var(--cyan); color: #fff; border: none;
@@ -439,7 +442,7 @@
     <h1>El reporte de composición corporal que tus pacientes van a entender</h1>
     <p class="lead">Convertí las mediciones de tu balanza Tanita en informes profesionales con un solo click.</p>
     <div class="hero-ctas">
-      <a href="#registro" class="btn-primary">Quiero acceso anticipado →</a>
+      <a href="#registro" class="btn-primary">Probá 15 días gratis →</a>
       <a href="#reporte" class="btn-secondary">Ver ejemplo del reporte ↓</a>
     </div>
   </div>
@@ -669,9 +672,9 @@
      REGISTRO / WAITLIST
 ══════════════════════════════════════ -->
 <section id="registro">
-  <span class="eyebrow">Acceso anticipado</span>
-  <h2>Sé de los primeros en acceder</h2>
-  <p class="reg-subtitle">Estamos en beta privada. Anotate y te avisamos cuando abramos el acceso.</p>
+  <span class="eyebrow">Probá gratis</span>
+  <h2>Empezá tu prueba de 15 días</h2>
+  <p class="reg-subtitle">Dejanos tus datos y te contactamos para activar tu prueba sin cargo. Sin tarjeta.</p>
 
   <div class="form-card">
     <form id="waitlist-form" novalidate>
@@ -694,15 +697,26 @@
             <option value="otro">Otro profesional de salud</option>
           </select>
         </div>
+        <div class="fg full">
+          <label for="telefono" class="label-wa">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="#25D366" aria-hidden="true" style="flex-shrink:0;">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885M20.52 3.449C18.24 1.245 15.24.044 12.045.044 5.463.044.103 5.4.1 11.987c0 2.106.55 4.162 1.595 5.976L0 24l6.305-1.654a11.96 11.96 0 005.71 1.454h.005c6.585 0 11.946-5.357 11.949-11.945a11.88 11.88 0 00-3.49-8.426"/>
+            </svg>
+            Teléfono / WhatsApp
+            <span class="lbl-opt">(opcional)</span>
+          </label>
+          <input type="tel" id="telefono" name="telefono" placeholder="Ej: +54 9 11 1234 5678" autocomplete="tel">
+          <p class="wa-hint">Si lo dejás, te escribimos por WhatsApp para activar tu prueba. No hacemos llamadas comerciales.</p>
+        </div>
       </div>
-      <button type="submit" class="btn-submit">Quiero acceso anticipado</button>
+      <button type="submit" class="btn-submit">Quiero mi prueba gratis</button>
       <p id="form-error"></p>
     </form>
 
     <div id="form-success">
       <div class="si">🎉</div>
-      <h3>¡Listo! Estás en la lista.</h3>
-      <p>Te avisamos cuando abramos el acceso anticipado a SmartBioScan.</p>
+      <h3>¡Listo! Recibimos tus datos.</h3>
+      <p>Te contactamos a la brevedad para activar tu prueba gratuita de SmartBioScan.</p>
     </div>
   </div>
 </section>
@@ -723,8 +737,8 @@
 <!-- ══════════════════════════════════════
      FAB MOBILE — "Comenzar" flotante
 ══════════════════════════════════════ -->
-<a href="#registro" class="fab-cta" id="fab-cta" aria-label="Comenzar — acceso anticipado">
-  Comenzar <span aria-hidden="true">→</span>
+<a href="#registro" class="fab-cta" id="fab-cta" aria-label="Comenzar — prueba gratis">
+  Probá gratis <span aria-hidden="true">→</span>
 </a>
 
 <!-- ══════════════════════════════════════
@@ -823,9 +837,10 @@
     e.preventDefault();
     const btn    = this.querySelector('.btn-submit');
     const errEl  = document.getElementById('form-error');
-    const nombre = document.getElementById('nombre').value.trim();
-    const email  = document.getElementById('email').value.trim();
-    const prof   = document.getElementById('profesion').value;
+    const nombre   = document.getElementById('nombre').value.trim();
+    const email    = document.getElementById('email').value.trim();
+    const prof     = document.getElementById('profesion').value;
+    const telefono = document.getElementById('telefono').value.trim();
 
     if (!nombre || !email || !prof) {
       errEl.textContent = 'Por favor completá todos los campos.';
@@ -841,7 +856,7 @@
       const res = await fetch(`${API_URL}/api/waitlist`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ nombre, email, profesion: prof }),
+        body: JSON.stringify({ nombre, email, profesion: prof, telefono: telefono || null }),
       });
 
       if (res.ok || res.status === 201) {
@@ -856,7 +871,7 @@
       errEl.textContent = 'Hubo un error al enviar. Por favor, intentá de nuevo.';
       errEl.style.display = 'block';
       btn.disabled = false;
-      btn.textContent = 'Quiero acceso anticipado';
+      btn.textContent = 'Quiero mi prueba gratis';
     }
   });
 </script>
